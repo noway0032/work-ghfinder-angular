@@ -1,42 +1,46 @@
 <div class="shadow p-2 mb-2 bg-white rounded">
   <form>
-    <div class="form-group d-flex bd-highlight mb-3">
-      <div class="bd-highlight">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputinputSearch">Search by*:</span>
+    <div class="container">
+      <div class="form-group row">
+        <div class="col-4">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputinputSearch">Search by*:</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputinputSearch">
           </div>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputinputSearch">
         </div>
-      </div>
-      <div class="p-2 bd-highlight">
-        <label>In:</label>
-      </div>
-      <div class="p-2 bd-highlight">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="nameCheck">
-          <label class="form-check-label" for="nameCheck">
-            name
-          </label>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-header">In:</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col form-check form-check-inline">
+                  <div class="p-2 bd-highlight">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="nameCheck" checked>
+                      <label class="form-check-label" for="nameCheck">name</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="descriptionCheck">
+                      <label class="form-check-label" for="descriptionCheck">description</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="readmeCheck">
+                      <label class="form-check-label" for="readmeCheck">readme</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="descriptionCheck">
-          <label class="form-check-label" for="descriptionCheck">
-            description
-          </label>
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Search</button>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="readmeCheck">
-          <label class="form-check-label" for="readmeCheck">
-            readme
-          </label>
+        <div class="col ml-auto">
+          <button type="submit" class="btn btn-primary" (click)="modStype()">Advanced ˇ</button>
         </div>
-      </div>
-      <div class="p-2 bd-highlight ml-auto">
-        <button type="submit" class="btn btn-primary">Search</button>
-      </div>
-      <div class="p-2 bd-highlight ml-auto">
-        <button type="submit" class="btn btn-primary" (click)="modStype()">Advanced ˇ</button>
       </div>
     </div>
   </form>

@@ -1,123 +1,189 @@
 <div class="shadow p-2 mb-2 bg-white rounded">
   <form>
-    <div class="form-group d-flex flex-nowrap bd-highlight">
-      <div class="bd-highlight">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputinputSearch">Search by*:</span>
-          </div>
-          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputinputSearch">
-        </div>
-      </div>
-      <div class="p-2 bd-highlight">
-        <label>In:</label>
-      </div>
-      <div class="p-2 bd-highlight">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="nameCheck">
-          <label class="form-check-label" for="nameCheck">
-            name
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="descriptionCheck">
-          <label class="form-check-label" for="descriptionCheck">
-            description
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="readmeCheck">
-          <label class="form-check-label" for="readmeCheck">
-            readme
-          </label>
-        </div>
-      </div>
-      <div class="p-2 bd-highlight ml-auto">
-        <button type="submit" class="btn btn-primary">Search</button>
-      </div>
-      <div class="p-2 bd-highlight ml-auto">
-        <button type="submit" class="btn btn-primary" (click)="modStype()">Standard ^</button>
-      </div>
-    </div>
-    <div class="form-group d-flex flex-nowrap bd-highlight">
-      <div class="container">
-        <div class="row">
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputUsername">User name:</span>
-              </div>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputUsername">
+    <div class="container">
+      <div class="form-group row">
+        <div class="col-4">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputinputSearch">Search by*:</span>
             </div>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputinputSearch">
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputOrganisation">Organisation:</span>
-              </div>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputOrganisation">
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputLanguage">Language:</span>
-              </div>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputLanguage">
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputTopic">Topic:</span>
-              </div>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputTopic">
-            </div>
-          </div>
-          <div class="col-4 col-lg-6 col-md-12 col-sm-12 mt-2">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <legend class="col-form-label col-sm-2 pt-0">Stars</legend>
-                  <div class="col form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="starsRadios1" value="option1" checked>
-                    <label class="form-check-label" for="starsRadios1">equal</label>
-                  </div>
-                  <div class="col form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="starsRadios2" value="option2">
-                    <label class="form-check-label" for="starsRadios2">greater than</label>
-                  </div>
-                  <div class="col form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="starsRadios3" value="option3">
-                    <label class="form-check-label" for="starsRadios3">less than</label>
-                  </div>
-                  <div class="col form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="starsRadios4" value="option4">
-                    <label class="form-check-label" for="starsRadios4">between</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-group input-group-sm mt-2">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputStarsNumber">Number:</span>
+        </div>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-header">In:</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col form-check form-check-inline">
+                  <div class="p-2 bd-highlight">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="nameCheck" checked>
+                      <label class="form-check-label" for="nameCheck">
+                        name
+                      </label>
                     </div>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputStarsNumber">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="descriptionCheck">
+                      <label class="form-check-label" for="descriptionCheck">
+                        description
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="readmeCheck">
+                      <label class="form-check-label" for="readmeCheck">
+                        readme
+                      </label>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+        <div class="col ml-auto">
+          <button type="submit" class="btn btn-primary" (click)="modStype()">Advanced ˇ</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <div class="input-group mt-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputUsername">User name:</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputUsername">
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <div class="input-group mt-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputOrganisation">Organisation:</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputOrganisation">
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <div class="input-group mt-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputLanguage">Language:</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputLanguage">
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <div class="input-group mt-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputTopic">Topic:</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputTopic">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mt-2">
+          <div class="card">
+            <div class="card-header">Stars</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="input-group input-group-sm mt-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputStarsNumber">Number:</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputStarsNumber">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="starsRadios" id="starsRadios1" value="option1">
+                  <label class="form-check-label" for="starsRadios1">equal</label>
+                </div>
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="starsRadios" id="starsRadios2" value="option2" checked>
+                  <label class="form-check-label" for="starsRadios2">greater&nbsp;than</label>
+                </div>
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="starsRadios" id="starsRadios3" value="option3">
+                  <label class="form-check-label" for="starsRadios3">less&nbsp;than</label>
+                </div>
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="starsRadios" id="starsRadios4" value="option4">
+                  <label class="form-check-label" for="starsRadios4">between</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mt-2">
+          <div class="card">
+            <div class="card-header">Created</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="input-group input-group-sm mt-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputCreatedsDate">Date:</span>
+                  </div>
+                  <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputStarsNumber">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="createdsRadios" id="createdsRadios1" value="option1">
+                  <label class="form-check-label" for="createdsRadios1">before</label>
+                </div>
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="createdsRadios" id="createdsRadios2" value="option2" checked>
+                  <label class="form-check-label" for="createdsRadios2">on&nbsp;or&nbsp;before</label>
+                </div>
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="createdsRadios" id="createdsRadios3" value="option3">
+                  <label class="form-check-label" for="createdsRadios3">after</label>
+                </div>
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="createdsRadios" id="createdsRadios4" value="option4">
+                  <label class="form-check-label" for="createdsRadios4">on&nbsp;or&nbsp;after</label>
+                </div>
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="createdsRadios" id="createdsRadios5" value="option5">
+                  <label class="form-check-label" for="createdsRadios5">between</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mt-2">
+          <div class="card">
+            <div class="card-header">Size</div>
+            <div class="card-body">
+              <div class="row">
+                <div class="input-group input-group-sm mt-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputSizeNumber">Number:</span>
+                  </div>
+                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputSizeNumber">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sizeRadios" id="sizeRadios1" value="option1">
+                  <label class="form-check-label" for="sizeRadios1">equal</label>
+                </div>
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sizeRadios" id="sizeRadios2" value="option2" checked>
+                  <label class="form-check-label" for="sizeRadios2">greater&nbsp;than</label>
+                </div>
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sizeRadios" id="sizeRadios3" value="option3">
+                  <label class="form-check-label" for="sizeRadios3">less&nbsp;than</label>
+                </div>
+                <div class="col form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sizeRadios" id="sizeRadios4" value="option4">
+                  <label class="form-check-label" for="sizeRadios4">between</label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
