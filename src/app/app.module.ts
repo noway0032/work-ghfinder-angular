@@ -7,6 +7,10 @@ import { NavbarComponent } from './core/navbar/navbar.component';
 import { SearchComponent } from './pages/search/search.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LoadingSpinnerComponent } from './core/loading-spinner/loading-spinner.component';
+import { SearchResultsComponent } from './elements/search-results/search-results.component';
+import { SearchBarExtendedComponent } from './elements/search-bar-extended/search-bar-extended.component';
+import { SearchBarDefaultComponent } from './elements/search-bar-default/search-bar-default.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +18,11 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     NavbarComponent,
     SearchComponent,
     HistoryComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoadingSpinnerComponent,
+    SearchResultsComponent,
+    SearchBarExtendedComponent,
+    SearchBarDefaultComponent
   ],
   imports: [
     BrowserModule,

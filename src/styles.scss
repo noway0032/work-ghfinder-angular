@@ -2,16 +2,17 @@
 
 body{
   background: $body-background;
+  font-size: smaller;
+  font-family: Arial, Helvetica;
 }
 app-root {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-bottom: -50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
   background: $body-box-background;
   width: $body-box-width;
   height: $body-box-height;
-  position: absolute;
-  top: 50%;
-  margin-bottom: -50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-  font-family: Arial, Helvetica;
 }
