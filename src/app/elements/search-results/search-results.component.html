@@ -1,3 +1,12 @@
-<div class="shadow p-2 mb-2 bg-white rounded h-100">
-  Results
-</div>
+<ng-container *ngIf="1 != null; else loading">
+  <div class="shadow p-2 mb-2 bg-light rounded">
+    Total results: {{onlineResult.total_count}}
+    <app-search-results-row
+      *ngFor="let or of onlineResultItems"
+      [result]="or">
+    </app-search-results-row>
+  </div>
+</ng-container>
+<ng-template #loading>
+  <app-loading-spinner></app-loading-spinner>
+</ng-template>

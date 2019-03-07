@@ -11,6 +11,10 @@ import { LoadingSpinnerComponent } from './core/loading-spinner/loading-spinner.
 import { SearchResultsComponent } from './elements/search-results/search-results.component';
 import { SearchBarExtendedComponent } from './elements/search-bar-extended/search-bar-extended.component';
 import { SearchBarDefaultComponent } from './elements/search-bar-default/search-bar-default.component';
+import { Page1Component } from './pages/page1/page1.component';
+import { Page2Component } from './pages/page2/page2.component';
+import { SearchResultsRowComponent } from './elements/search-results-row/search-results-row.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,9 +26,13 @@ import { SearchBarDefaultComponent } from './elements/search-bar-default/search-
     LoadingSpinnerComponent,
     SearchResultsComponent,
     SearchBarExtendedComponent,
-    SearchBarDefaultComponent
+    SearchBarDefaultComponent,
+    Page1Component,
+    Page2Component,
+    SearchResultsRowComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule
   ],

@@ -1,0 +1,24 @@
+<div class="row no-gutters bg-light position-relative mt-3">
+  <div class="col bg-info mb-md-0 p-md-4">
+    <table style="width: 100%;">
+      <tr>
+        <td>{{result.name}}</td>
+        <td>Stars: {{result.stargazers_count}}</td>
+        <td>Forks: {{result.forks_count}}</td>
+        <td rowspan="2" style="vertical-align: text-top;">{{result.description}}</td>
+        <td rowspan="2" style="vertical-align: text-top;">
+          <span class="badge badge-pill badge-dark">{{result.language}}</span>
+        </td>
+        <td>Created at: {{result.created_at}}</td>
+        <td rowspan="2" style="vertical-align: text-top;">By: {{result.owner.login}}
+        <img src="{{result.owner.avatar_url}}" height="50px" /></td>
+      </tr>
+      <tr>
+        <td>{{result.full_name}}</td>
+        <td>Watchers: {{result.watchers_count}}</td>
+        <td>Issues: {{result.open_issues_count}}</td>
+        <td>Updated at: {{result.updated_at}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

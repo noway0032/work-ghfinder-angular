@@ -16,4 +16,7 @@ export class SearchBarDefaultComponent {
   modStype() {
     this.mstype.emit();
   }
+
+  search() {
+  }
 }
