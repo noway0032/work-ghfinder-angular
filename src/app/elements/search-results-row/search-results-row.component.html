@@ -1,23 +1,44 @@
 <div class="row no-gutters bg-light position-relative mt-3">
-  <div class="col bg-info mb-md-0 p-md-4">
+  <div class="col bg-info mb-md-0 p-md-2">
     <table style="width: 100%;">
       <tr>
-        <td>{{result.name}}</td>
+        <td
+          data-toggle="tooltip"
+          data-placement="top"
+          title="{{result.name}}">
+          {{smallText(result.name, 15)}}
+        </td>
         <td>Stars: {{result.stargazers_count}}</td>
         <td>Forks: {{result.forks_count}}</td>
-        <td rowspan="2" style="vertical-align: text-top;">{{result.description}}</td>
-        <td rowspan="2" style="vertical-align: text-top;">
+        <td rowspan="2"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="{{result.description}}">
+          {{smallText(result.description, 130)}}
+        </td>
+        <td rowspan="2">
           <span class="badge badge-pill badge-dark">{{result.language}}</span>
         </td>
-        <td>Created at: {{result.created_at}}</td>
-        <td rowspan="2" style="vertical-align: text-top;">By: {{result.owner.login}}
-        <img src="{{result.owner.avatar_url}}" height="50px" /></td>
+        <td>Created at: {{result.created_at | date:'yyyy.MM.dd'}}</td>
+        <td
+          rowspan="2"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="{{result.owner.login}}">
+          By: <br/>{{smallText(result.owner.login, 10)}}
+        </td>
+        <td rowspan="2"><img src="{{result.owner.avatar_url}}" height="50px" /></td>
       </tr>
       <tr>
-        <td>{{result.full_name}}</td>
+        <td
+          data-toggle="tooltip"
+          data-placement="top"
+          title="{{result.full_name}}">
+          {{smallText(result.full_name, 15)}}
+        </td>
         <td>Watchers: {{result.watchers_count}}</td>
         <td>Issues: {{result.open_issues_count}}</td>
-        <td>Updated at: {{result.updated_at}}</td>
+        <td>Updated at: {{result.updated_at | date:'yyyy.MM.dd'}}</td>
       </tr>
     </table>
   </div>

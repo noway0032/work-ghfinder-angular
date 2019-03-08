@@ -1,28 +1,47 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {GitResultModel} from '../model/git-result-model';
-import {Router} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GitResultService implements OnInit {
+export class GitResultService {
 
-  private _results: GitResultModel;
+  private _url = '';
+  private _refreshNeeded$ = new Subject<void>();
+  private _headers = new HttpHeaders({ 'Content-Type': 'application/json'});
 
-  constructor(private _router: Router,
-              private _http: HttpClient) {
+  constructor(private _http: HttpClient) {
   }
 
   getResults(): Observable<GitResultModel> {
-    const url = 'https://api.github.com/search/repositories?q=tetris&per_page=5';
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    return this._http.get<GitResultModel>(url, { headers: headers });
+    return this._http
+      .get<GitResultModel>(
+        this._url, { headers: this._headers });
   }
 
-  ngOnInit(): void {
+  refresResults(): Observable<GitResultModel> {
+    return this._http
+      .get<GitResultModel>(
+        this._url, { headers: this._headers })
+      .pipe(
+        tap(() => {
+          this._refreshNeeded$.next();
+        })
+      );
+  }
+
+  get refreshNeeded$(): Subject<void> {
+    return this._refreshNeeded$;
+  }
+
+  get url(): string {
+    return this._url;
+  }
+
+  set url(value: string) {
+    this._url = value;
   }
 }

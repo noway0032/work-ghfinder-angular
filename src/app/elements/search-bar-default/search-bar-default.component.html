@@ -1,5 +1,7 @@
 <div class="shadow p-2 mb-2 bg-light rounded">
-  <form>
+  <form class="mb-0"
+        #eventForm="ngForm"
+        (ngSubmit)="onSubmit(eventForm.value)">
     <div class="container">
       <div class="form-group row mt-2">
         <div class="col-4">
@@ -7,7 +9,13 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputinputSearch">Search by*:</span>
             </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputinputSearch">
+            <input
+              type="text"
+              id="newEventTitle"
+              class="form-control"
+              name="searchBy"
+              [(ngModel)]="searchModel.searchBy"
+              placeholder="Keresés paramétere">
           </div>
         </div>
         <div class="col-4">
@@ -18,19 +26,33 @@
                 <div class="col form-check form-check-inline">
                   <div class="p-2 bd-highlight">
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="nameCheck" checked>
+                      <input class="form-check-input"
+                             type="checkbox"
+                             id="nameCheck"
+                             name="inName"
+                             [(ngModel)]="searchModel.inName">
                       <label class="form-check-label" for="nameCheck">
                         name
                       </label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="descriptionCheck">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="descriptionCheck"
+                        name="inDescription"
+                        [(ngModel)]="searchModel.inDescription">
                       <label class="form-check-label" for="descriptionCheck">
                         description
                       </label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="readmeCheck">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="readmeCheck"
+                        name="inReadme"
+                        [(ngModel)]="searchModel.inReadme">
                       <label class="form-check-label" for="readmeCheck">
                         readme
                       </label>
@@ -42,10 +64,10 @@
           </div>
         </div>
         <div class="col mr-auto">
-          <button type="submit" class="btn btn-primary" (click)="search()">Search</button>
+          <button type="submit" class="btn btn-primary">Search</button>
         </div>
         <div class="col align">
-          <button type="submit" class="btn btn-primary mr-sm-2" (click)="modStype()">Advanced ˇ</button>
+          <button class="btn btn-primary mr-sm-2" (click)="modStype()">Advanced ˇ</button>
         </div>
       </div>
     </div>

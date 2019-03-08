@@ -1,6 +1,8 @@
 <ng-container *ngIf="1 != null; else loading">
   <div class="shadow p-2 mb-2 bg-light rounded">
-    Total results: {{onlineResult.total_count}}
+    <span *ngIf="onlineResult != null">
+      Total results: {{onlineResult.total_count}}
+    </span>
     <app-search-results-row
       *ngFor="let or of onlineResultItems"
       [result]="or">

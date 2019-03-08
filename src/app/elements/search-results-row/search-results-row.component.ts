@@ -14,4 +14,8 @@ export class SearchResultsRowComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  smallText(txt: string, len: number): string {
+    return txt == null || txt.length < len ? txt : txt.substr(0, len) + '...';
+  }
 }
