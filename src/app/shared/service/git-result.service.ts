@@ -16,12 +16,6 @@ export class GitResultService {
   constructor(private _http: HttpClient) {
   }
 
-  getResults(): Observable<GitResultModel> {
-    return this._http
-      .get<GitResultModel>(
-        this._url, { headers: this._headers });
-  }
-
   refresResults(): Observable<GitResultModel> {
     return this._http
       .get<GitResultModel>(
@@ -31,10 +25,6 @@ export class GitResultService {
           this._refreshNeeded$.next();
         })
       );
-  }
-
-  get refreshNeeded$(): Subject<void> {
-    return this._refreshNeeded$;
   }
 
   get url(): string {

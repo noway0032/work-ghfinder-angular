@@ -8,6 +8,7 @@ import {GitResultService} from './git-result.service';
 export class SearchService {
 
   private _searchDedault: SearchModel;
+  private _activeSearch = false;
 
   constructor(
     private _gitResultService: GitResultService) {
@@ -30,9 +31,9 @@ export class SearchService {
     let inS = this.searchDedault.inName ? '+in:name' : '';
     inS += this.searchDedault.inDescription ? '+in:description' : '';
     inS += this.searchDedault.inReadme ? '+in:readme' : '';
-    this._gitResultService.url = 'https://api.github.com/search/repositories?q=' + this.searchDedault.searchBy + inS + '&per_page=5';
+    const perPages = ''; // '&per_page=5'
+    this._gitResultService.url = 'https://api.github.com/search/repositories?q=' + this.searchDedault.searchBy + inS + perPages;
     console.log(this._gitResultService.url);
-    this._gitResultService.refresResults();
   }
 
   get searchDedault(): SearchModel {
@@ -41,5 +42,13 @@ export class SearchService {
 
   set searchDedault(value: SearchModel) {
     this._searchDedault = value;
+  }
+
+  get activeSearch(): boolean {
+    return this._activeSearch;
+  }
+
+  set activeSearch(value: boolean) {
+    this._activeSearch = value;
   }
 }

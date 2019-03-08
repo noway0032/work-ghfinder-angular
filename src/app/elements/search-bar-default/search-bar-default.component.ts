@@ -28,7 +28,9 @@ export class SearchBarDefaultComponent implements OnInit {
   }
 
   onSubmit(form) {
+    this._searchService.activeSearch = true;
     this._searchService.startSearch();
+    this._searchService.activeSearch = true;
     this._router
       .navigateByUrl('/Refrsh', {skipLocationChange: true})
       .then(() =>

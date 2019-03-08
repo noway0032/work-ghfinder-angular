@@ -13,30 +13,56 @@ export class SearchResultsComponent implements OnInit {
 
   private onlineResult: GitResultModel;
   private onlineResultItems: GitResultItemModel[];
+  private _page = 0;
+  private _rowProPage = 5;
 
   constructor(private _gitResultService: GitResultService,
               private _searchDefaultService: SearchService) {
   }
 
-  get foundSeaschBy(): boolean {
-    return this._searchDefaultService.searchDedault.searchBy !== '';
-  }
-
-
   ngOnInit() {
-    this._gitResultService.refreshNeeded$
-      .subscribe(() => {
-        this.getAllRow();
-      });
     this.getAllRow();
   }
 
   getAllRow() {
-    this._gitResultService.getResults()
-      .subscribe(
-        data => {
-          this.onlineResult = data;
-          this.onlineResultItems = data.items;
-        });
+    if (this._searchDefaultService.activeSearch) {
+      this._gitResultService.refresResults()
+        .subscribe(
+          data => {
+            this.onlineResult = data;
+            this.onlineResultItems = data.items;
+          });
+    }
+  }
+
+  previousPage() {
+    if (this.page > 0) {
+      this.page--;
+    }
+  }
+  followingPage() {
+    if ((this.page + 1) * 5 < this.onlineResultItems.length) {
+      this.page++;
+    }
+  }
+
+  get searchDefaultService(): SearchService {
+    return this._searchDefaultService;
+  }
+
+  get page(): number {
+    return this._page;
+  }
+
+  set page(value: number) {
+    this._page = value;
+  }
+
+  get rowProPage(): number {
+    return this._rowProPage;
+  }
+
+  set rowProPage(value: number) {
+    this._rowProPage = value;
   }
 }

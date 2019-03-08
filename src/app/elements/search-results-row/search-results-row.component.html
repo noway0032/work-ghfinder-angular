@@ -11,10 +11,11 @@
         <td>Stars: {{result.stargazers_count}}</td>
         <td>Forks: {{result.forks_count}}</td>
         <td rowspan="2"
+            class="small pr-2"
             data-toggle="tooltip"
             data-placement="top"
             title="{{result.description}}">
-          {{smallText(result.description, 130)}}
+          {{smallText(result.description, 160)}}
         </td>
         <td rowspan="2">
           <span class="badge badge-pill badge-dark">{{result.language}}</span>
@@ -27,14 +28,20 @@
           title="{{result.owner.login}}">
           By: <br/>{{smallText(result.owner.login, 10)}}
         </td>
-        <td rowspan="2"><img src="{{result.owner.avatar_url}}" height="50px" /></td>
+        <td rowspan="2">
+          <a href="{{result.owner.html_url}}" target="_blank">
+            <img src="{{result.owner.avatar_url}}" height="50px" />
+          </a>
+        </td>
       </tr>
       <tr>
         <td
           data-toggle="tooltip"
           data-placement="top"
           title="{{result.full_name}}">
-          {{smallText(result.full_name, 15)}}
+          <a href="{{result.html_url}}" target="_blank">
+            {{smallText(result.full_name, 15)}}
+          </a>
         </td>
         <td>Watchers: {{result.watchers_count}}</td>
         <td>Issues: {{result.open_issues_count}}</td>
