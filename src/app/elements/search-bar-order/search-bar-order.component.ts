@@ -1,18 +1,18 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {SearchModel} from '../../shared/model/search-model';
 import {Router} from '@angular/router';
 import {SearchService} from '../../shared/service/search.service';
+import {InputRadioOrder} from '../../shared/enum/input-radio-order.enum';
 import {GitResultService} from '../../shared/service/git-result.service';
+import {InputRadioSort} from '../../shared/enum/input-radio-sort.enum';
 
 @Component({
-  selector: 'app-search-bar-default',
-  templateUrl: './search-bar-default.component.html',
-  styleUrls: ['./search-bar-default.component.scss']
+  selector: 'app-search-bar-order',
+  templateUrl: './search-bar-order.component.html',
+  styleUrls: ['./search-bar-order.component.scss']
 })
-export class SearchBarDefaultComponent implements OnInit {
+export class SearchBarOrderComponent implements OnInit {
 
-  @Input() stype;
-  @Output() mstype = new EventEmitter<void>();
   private _searchModel: SearchModel;
 
   constructor(
@@ -22,17 +22,11 @@ export class SearchBarDefaultComponent implements OnInit {
   }
 
   ngOnInit() {
-      this._searchModel = this._searchService.searchModel;
+    this._searchModel = this._searchService.searchModel;
   }
 
-  modStype() {
-    this.mstype.emit();
-  }
-
-  onSubmit(form) {
-    this._gitResultService.onlineResult = null;
-    this._searchService.activeSearch = true;
-    this._searchService.startSearch();
+  orderByRadiosClick(sort: InputRadioSort, order: InputRadioOrder) {
+    this._gitResultService.sortOrderBy(sort, order);
     this._router
       .navigateByUrl('/Refrsh', {skipLocationChange: true})
       .then(() =>
@@ -41,5 +35,9 @@ export class SearchBarDefaultComponent implements OnInit {
 
   get searchModel(): SearchModel {
     return this._searchModel;
+  }
+
+  set searchModel(value: SearchModel) {
+    this._searchModel = value;
   }
 }

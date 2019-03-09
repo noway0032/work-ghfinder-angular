@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GitResultModel} from '../../shared/model/git-result-model';
 import {GitResultService} from '../../shared/service/git-result.service';
-import {GitResultItemModel} from '../../shared/model/git-result-item-model';
 import {SearchService} from '../../shared/service/search.service';
 
 @Component({
@@ -11,58 +9,22 @@ import {SearchService} from '../../shared/service/search.service';
 })
 export class SearchResultsComponent implements OnInit {
 
-  private onlineResult: GitResultModel;
-  private onlineResultItems: GitResultItemModel[];
-  private _page = 0;
-  private _rowProPage = 5;
 
   constructor(private _gitResultService: GitResultService,
-              private _searchDefaultService: SearchService) {
+              private _searchService: SearchService) {
   }
 
   ngOnInit() {
-    this.getAllRow();
-  }
-
-  getAllRow() {
-    if (this._searchDefaultService.activeSearch) {
-      this._gitResultService.refresResults()
-        .subscribe(
-          data => {
-            this.onlineResult = data;
-            this.onlineResultItems = data.items;
-          });
+    if (this.gitResultService.onlineResult == null) {
+      this.gitResultService.getAllRow();
     }
   }
 
-  previousPage() {
-    if (this.page > 0) {
-      this.page--;
-    }
-  }
-  followingPage() {
-    if ((this.page + 1) * 5 < this.onlineResultItems.length) {
-      this.page++;
-    }
+  get searchService(): SearchService {
+    return this._searchService;
   }
 
-  get searchDefaultService(): SearchService {
-    return this._searchDefaultService;
-  }
-
-  get page(): number {
-    return this._page;
-  }
-
-  set page(value: number) {
-    this._page = value;
-  }
-
-  get rowProPage(): number {
-    return this._rowProPage;
-  }
-
-  set rowProPage(value: number) {
-    this._rowProPage = value;
+  get gitResultService(): GitResultService {
+    return this._gitResultService;
   }
 }

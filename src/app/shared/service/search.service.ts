@@ -1,18 +1,20 @@
 import {Injectable} from '@angular/core';
 import {SearchModel} from '../model/search-model';
 import {GitResultService} from './git-result.service';
+import {InputRadioOrder} from '../enum/input-radio-order.enum';
+import {InputRadioSort} from '../enum/input-radio-sort.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
 
-  private _searchDedault: SearchModel;
+  private _searchModel: SearchModel;
   private _activeSearch = false;
 
   constructor(
     private _gitResultService: GitResultService) {
-    this._searchDedault = this.defaultSearch;
+    this._searchModel = this.defaultSearch;
   }
 
   get defaultSearch(): SearchModel {
@@ -21,27 +23,30 @@ export class SearchService {
     sd.inName = true;
     sd.inDescription = false;
     sd.inReadme = false;
+    sd.sortBy = InputRadioSort.DEFAULT;
+    sd.orderBy = InputRadioOrder.DESC;
     return sd;
   }
 
   startSearch() {
-    if (!this.searchDedault.inName && !this.searchDedault.inDescription && !this.searchDedault.inReadme) {
-      this.searchDedault.inName = true;
+    if (!this.searchModel.inName && !this.searchModel.inDescription && !this.searchModel.inReadme) {
+      this.searchModel.inName = true;
     }
-    let inS = this.searchDedault.inName ? '+in:name' : '';
-    inS += this.searchDedault.inDescription ? '+in:description' : '';
-    inS += this.searchDedault.inReadme ? '+in:readme' : '';
+    let inS = this.searchModel.inName ? '+in:name' : '';
+    inS += this.searchModel.inDescription ? '+in:description' : '';
+    inS += this.searchModel.inReadme ? '+in:readme' : '';
+    inS += '&sort=' + this.searchModel.sortBy;
+    inS += '&order=' + this.searchModel.orderBy;
     const perPages = ''; // '&per_page=5'
-    this._gitResultService.url = 'https://api.github.com/search/repositories?q=' + this.searchDedault.searchBy + inS + perPages;
-    console.log(this._gitResultService.url);
+    this._gitResultService.url = 'https://api.github.com/search/repositories?q=' + this.searchModel.searchBy + inS + perPages;
   }
 
-  get searchDedault(): SearchModel {
-    return this._searchDedault;
+  get searchModel(): SearchModel {
+    return this._searchModel;
   }
 
-  set searchDedault(value: SearchModel) {
-    this._searchDedault = value;
+  set searchModel(value: SearchModel) {
+    this._searchModel = value;
   }
 
   get activeSearch(): boolean {

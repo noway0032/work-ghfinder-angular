@@ -16,6 +16,6 @@ export class SearchResultsRowComponent implements OnInit {
   }
 
   smallText(txt: string, len: number): string {
-    return txt == null || txt.length < len ? txt : txt.substr(0, len) + '...';
+    return txt == null || txt.length <= len ? txt : txt.substr(0, len) + '...';
   }
 }

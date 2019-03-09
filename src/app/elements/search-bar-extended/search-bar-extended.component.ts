@@ -20,7 +20,7 @@ export class SearchBarExtendedComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._searchModel = this._searchService.searchDedault;
+    this._searchModel = this._searchService.searchModel;
   }
 
   modStype() {

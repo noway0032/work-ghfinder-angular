@@ -15,6 +15,7 @@ import { SearchResultsRowComponent } from './elements/search-results-row/search-
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {SearchComponent} from './pages/search/search.component';
+import { SearchBarOrderComponent } from './elements/search-bar-order/search-bar-order.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {SearchComponent} from './pages/search/search.component';
     Page1Component,
     Page2Component,
     SearchComponent,
-    SearchResultsRowComponent
+    SearchResultsRowComponent,
+    SearchBarOrderComponent
   ],
   imports: [
     HttpClientModule,

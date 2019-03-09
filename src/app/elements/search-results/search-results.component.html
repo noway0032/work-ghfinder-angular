@@ -1,41 +1,44 @@
-<ng-container *ngIf="searchDefaultService.activeSearch; else coming">
-  <ng-container *ngIf="onlineResult != null; else loading">
+<ng-container *ngIf="gitResultService.onlineResult != null; else coming">
+  <div class="shadow p-2 mb-2 bg-light rounded">
+    <table class="w-100">
+       <tr>
+         <td class="text-left">
+           <app-search-bar-order></app-search-bar-order>
+         </td>
+         <td class="text-right">
+           <div>
+             Total results: {{gitResultService.onlineResult.total_count}}
+           </div>
+         </td>
+       </tr>
+    </table>
+    <app-search-results-row
+      *ngFor="let or of (gitResultService.onlineResultItems.slice(gitResultService.page*gitResultService.rowProPage,gitResultService.page*gitResultService.rowProPage+5))"
+      [result]="or">
+    </app-search-results-row>
+    <div class="w-100 mt-2">
+      <nav class="mx-auto" style="width: 200px;" aria-label="Page navigation">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" (click)="gitResultService.previousPage()">Previous</a></li>
+          <li class="page-item"><a class="page-link">{{gitResultService.totalPages}}  / {{this.gitResultService.page+1}}</a></li>
+          <li class="page-item"><a class="page-link" (click)="gitResultService.followingPage()">Next</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</ng-container>
+<ng-template #coming>
+  <ng-container *ngIf="!searchService.activeSearch; else loading">
     <div class="shadow p-2 mb-2 bg-light rounded">
-      <table class="w-100">
-         <tr>
-           <td class="text-left" style="width: 100px">Info:</td>
-           <td class="text-right" style="width: 100px">
-           </td>
-           <td class="text-right" style="width: 100px">
-             <div>
-               Total results: {{onlineResult.total_count}}
-             </div>
-           </td>
-         </tr>
-      </table>
-      <app-search-results-row
-        *ngFor="let or of (onlineResultItems ? onlineResultItems.slice(page*rowProPage,page*rowProPage+5): [])"
-        [result]="or">
-      </app-search-results-row>
-      <div class="w-100 mt-2">
-        <nav class="mx-auto" style="width: 200px;" aria-label="Page navigation">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" (click)="previousPage()">Previous</a></li>
-            <li class="page-item"><a class="page-link">{{onlineResultItems.length/rowProPage}} / {{this.page+1}}</a></li>
-            <li class="page-item"><a class="page-link" (click)="followingPage()">Next</a></li>
-          </ul>
-        </nav>
+      <div class="py-5 text-center">
+        Search results are coming here
       </div>
     </div>
   </ng-container>
   <ng-template #loading>
     <app-loading-spinner></app-loading-spinner>
   </ng-template>
-</ng-container>
-<ng-template #coming>
-  <div class="shadow p-2 mb-2 bg-light rounded">
-    <div class="py-5 text-center">
-      Search results are coming here
-    </div>
-  </div>
 </ng-template>
+
+
+
