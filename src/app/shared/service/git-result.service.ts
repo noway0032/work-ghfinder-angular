@@ -13,13 +13,13 @@ import {InputRadioOrder} from '../enum/input-radio-order.enum';
 export class GitResultService {
 
   private _page = 0;
+  private _rowProPage = 5;
   private _onlineResult: GitResultModel;
   private _onlineResultItems: GitResultItemModel[];
   private _totalPages: number;
   private _url: string;
   private _refreshNeeded$ = new Subject<void>();
   private _headers = new HttpHeaders({ 'Content-Type': 'application/json'});
-  private _rowProPage = 5;
 
   constructor(private _http: HttpClient) {
   }
@@ -43,6 +43,7 @@ export class GitResultService {
             this.onlineResult = data;
             this.onlineResultItems = data.items;
             this.totalPages = Math.ceil(data.items.length / this.rowProPage);
+            this._page = 0;
           });
     }
   }
@@ -53,7 +54,7 @@ export class GitResultService {
     }
   }
   followingPage() {
-    if ((this.page + 1) * 5 < this.onlineResultItems.length) {
+    if ((this.page + 1) * this._rowProPage < this.onlineResultItems.length) {
       this.page++;
     }
   }

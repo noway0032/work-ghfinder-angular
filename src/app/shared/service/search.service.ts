@@ -3,6 +3,7 @@ import {SearchModel} from '../model/search-model';
 import {GitResultService} from './git-result.service';
 import {InputRadioOrder} from '../enum/input-radio-order.enum';
 import {InputRadioSort} from '../enum/input-radio-sort.enum';
+import {SearchAdvancedModel} from '../model/search-advanced-model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class SearchService {
   }
 
   get defaultSearch(): SearchModel {
-    const sd = new SearchModel();
+    const sd = new SearchAdvancedModel();
     sd.searchBy = '';
     sd.inName = true;
     sd.inDescription = false;

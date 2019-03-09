@@ -1,5 +1,5 @@
 <ng-container *ngIf="1 != null; else loading">
-  <div class="container-fluid" style="height: inherit;">
+  <div class="container-fluid mt-2" style="height: inherit;">
     <div class="row-fluid">
       <div class="col-12">
         <app-search-bar-default *ngIf="_extended; else extended" [stype]="_extended" (mstype)="modInput()"></app-search-bar-default>

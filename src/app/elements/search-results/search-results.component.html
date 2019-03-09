@@ -1,5 +1,5 @@
 <ng-container *ngIf="gitResultService.onlineResult != null; else coming">
-  <div class="shadow p-2 mb-2 bg-light rounded">
+  <div class="shadow p-2 mb-4 bg-light rounded">
     <table class="w-100">
        <tr>
          <td class="text-left">
@@ -13,7 +13,7 @@
        </tr>
     </table>
     <app-search-results-row
-      *ngFor="let or of (gitResultService.onlineResultItems.slice(gitResultService.page*gitResultService.rowProPage,gitResultService.page*gitResultService.rowProPage+5))"
+      *ngFor="let or of (gitResultService.onlineResultItems.slice(gitResultService.page * gitResultService.rowProPage, gitResultService.page * gitResultService.rowProPage + gitResultService.rowProPage))"
       [result]="or">
     </app-search-results-row>
     <div class="w-100 mt-2">
