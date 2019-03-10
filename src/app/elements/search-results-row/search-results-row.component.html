@@ -6,7 +6,7 @@
           data-toggle="tooltip"
           data-placement="top"
           title="{{result.name}}">
-          {{smallText(result.name, 15)}}
+          {{smallText(result.name, 12)}}
         </td>
         <td>Stars: {{result.stargazers_count}}</td>
         <td>Forks: {{result.forks_count}}</td>
@@ -15,7 +15,7 @@
             data-toggle="tooltip"
             data-placement="top"
             title="{{result.description}}">
-          {{smallText(result.description, 160)}}
+          <div class="container">{{smallText(result.description, 160)}}</div>
         </td>
         <td rowspan="2">
           <span class="badge badge-pill badge-dark">{{result.language}}</span>
@@ -40,7 +40,7 @@
           data-placement="top"
           title="{{result.full_name}}">
           <a href="{{result.html_url}}" target="_blank">
-            {{smallText(result.full_name, 15)}}
+            {{smallText(result.full_name, 12)}}
           </a>
         </td>
         <td>Watchers: {{result.watchers_count}}</td>

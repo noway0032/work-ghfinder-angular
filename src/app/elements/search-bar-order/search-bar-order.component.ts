@@ -27,6 +27,7 @@ export class SearchBarOrderComponent implements OnInit {
 
   orderByRadiosClick(sort: InputRadioSort, order: InputRadioOrder) {
     this._gitResultService.sortOrderBy(sort, order);
+    // this._searchService.startSearch();
     this._router
       .navigateByUrl('/Refrsh', {skipLocationChange: true})
       .then(() =>

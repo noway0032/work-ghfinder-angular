@@ -1,6 +1,6 @@
-export enum inputRadioStars {
-  EQUAL = 1,
-  GREATER_THAN = 2,
-  LESS_THAN = 3,
-  BETWEEN = 4
+export enum InputRadioStars {
+  EQUAL = 'equal',
+  GREATER_THAN = 'greater_than',
+  LESS_THAN = 'less_than',
+  BETWEEN = 'between'
 }

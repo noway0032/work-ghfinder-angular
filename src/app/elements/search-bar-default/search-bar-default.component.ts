@@ -30,13 +30,15 @@ export class SearchBarDefaultComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this._gitResultService.onlineResult = null;
-    this._searchService.activeSearch = true;
-    this._searchService.startSearch();
+    this._searchService.startStandardSearch();
     this._router
       .navigateByUrl('/Refrsh', {skipLocationChange: true})
       .then(() =>
         this._router.navigate(['/search']));
+  }
+
+  checkedInput(bool: boolean): string {
+    return bool ? 'active' : '';
   }
 
   get searchModel(): SearchModel {

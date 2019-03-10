@@ -1,6 +1,6 @@
 export enum InputRadioSize {
-  EQUAL = 1,
-  GREATER_THAN = 2,
-  LESS_THAN = 3,
-  BETWEEN = 4
+  EQUAL = 'equal',
+  GREATER_THAN = 'greater_than',
+  LESS_THAN = 'less_than',
+  BETWEEN = 'between'
 }

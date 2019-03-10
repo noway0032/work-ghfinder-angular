@@ -3,9 +3,9 @@
         #eventForm="ngForm"
         (ngSubmit)="onSubmit(eventForm.value)">
     <div class="container">
-      <div class="form-group row mt-2">
-        <div class="col-4">
-          <div class="input-group">
+      <div class="row form-group mt-2">
+        <div class="col mt-3">
+          <div class="input-group" style="min-width: 320px">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputinputSearch">Search by*:</span>
             </div>
@@ -18,56 +18,40 @@
               placeholder="Keresés paramétere">
           </div>
         </div>
-        <div class="col-4">
-          <div class="card">
-            <div class="card-header">In:</div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col form-check form-check-inline">
-                  <div class="p-2 bd-highlight">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input"
-                             type="checkbox"
-                             id="nameCheck"
-                             name="inName"
-                             [(ngModel)]="searchModel.inName">
-                      <label class="form-check-label" for="nameCheck">
-                        name
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="descriptionCheck"
-                        name="inDescription"
-                        [(ngModel)]="searchModel.inDescription">
-                      <label class="form-check-label" for="descriptionCheck">
-                        description
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="readmeCheck"
-                        name="inReadme"
-                        [(ngModel)]="searchModel.inReadme">
-                      <label class="form-check-label" for="readmeCheck">
-                        readme
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="col mt-3 btn-group flex-grow-0 form-check form-check-inline btn-group-toggle ml-auto">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputinputSearcParam">In:</span>
           </div>
+          <label class="btn btn-info form-check-label {{checkedInput(searchModel.inName)}}" for="nameCheck">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="nameCheck"
+              name="inName"
+              [(ngModel)]="searchModel.inName">name
+          </label>
+          <label class="btn btn-info form-check-label {{checkedInput(searchModel.inDescription)}}" for="descriptionCheck">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="descriptionCheck"
+              name="inDescription"
+              [(ngModel)]="searchModel.inDescription">description
+          </label>
+          <label class="btn btn-info form-check-label {{checkedInput(searchModel.inReadme)}}" for="readmeCheck">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="readmeCheck"
+              name="inReadme"
+              [(ngModel)]="searchModel.inReadme"> readme
+          </label>
         </div>
-        <div class="col mr-auto">
-          <button type="submit" class="btn btn-primary">Search</button>
+        <div class="col col-sd-6 mt-3 flex-grow-0 ml-auto">
+          <button type="submit" class="btn btn-primary" style="width: 110px;">Search</button>
         </div>
-        <div class="col align">
-          <button class="btn btn-primary mr-sm-2" (click)="modStype()">Advanced ˇ</button>
+        <div class="col col-sd-6 mt-3 flex-grow-0 ml-auto">
+          <button class="btn btn-secondary mr-sm-2" style="width: 110px;" (click)="modStype()">Advanced&nbsp;ˇ</button>
         </div>
       </div>
     </div>

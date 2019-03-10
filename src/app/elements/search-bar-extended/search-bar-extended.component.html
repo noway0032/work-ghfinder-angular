@@ -3,9 +3,9 @@
         #eventForm="ngForm"
         (ngSubmit)="onSubmit(eventForm.value)">
     <div class="container">
-      <div class="form-group row mt-2">
-        <div class="col-4">
-          <div class="input-group">
+      <div class="row form-group mt-2">
+        <div class="col mt-3">
+          <div class="input-group" style="min-width: 320px">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputinputSearch">Search by*:</span>
             </div>
@@ -18,56 +18,40 @@
               placeholder="Keresés paramétere">
           </div>
         </div>
-        <div class="col-4">
-          <div class="card">
-            <div class="card-header">In:</div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col form-check form-check-inline">
-                  <div class="p-2 bd-highlight">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input"
-                             type="checkbox"
-                             id="nameCheck"
-                             name="inName"
-                             [(ngModel)]="searchModel.inName">
-                      <label class="form-check-label" for="nameCheck">
-                        name
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="descriptionCheck"
-                        name="inDescription"
-                        [(ngModel)]="searchModel.inDescription">
-                      <label class="form-check-label" for="descriptionCheck">
-                        description
-                      </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="readmeCheck"
-                        name="inReadme"
-                        [(ngModel)]="searchModel.inReadme">
-                      <label class="form-check-label" for="readmeCheck">
-                        readme
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="col mt-3 btn-group flex-grow-0 form-check form-check-inline btn-group-toggle ml-auto">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputinputSearcParam">In:</span>
           </div>
+          <label class="btn btn-info form-check-label {{checkedInput(searchModel.inName)}}" for="nameCheck">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="nameCheck"
+              name="inName"
+              [(ngModel)]="searchModel.inName">name
+          </label>
+          <label class="btn btn-info form-check-label {{checkedInput(searchModel.inDescription)}}" for="descriptionCheck">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="descriptionCheck"
+              name="inDescription"
+              [(ngModel)]="searchModel.inDescription">description
+          </label>
+          <label class="btn btn-info form-check-label {{checkedInput(searchModel.inReadme)}}" for="readmeCheck">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="readmeCheck"
+              name="inReadme"
+              [(ngModel)]="searchModel.inReadme"> readme
+          </label>
         </div>
-        <div class="col mr-auto">
-          <button type="submit" class="btn btn-primary">Search</button>
+        <div class="col mt-3 flex-grow-0 ml-auto">
+          <button type="submit" class="btn btn-primary" style="width: 110px;">Search</button>
         </div>
-        <div class="col align">
-          <button class="btn btn-primary mr-sm-2" (click)="modStype()">Advanced ˇ</button>
+        <div class="col mt-3 flex-grow-0">
+          <button class="btn btn-secondary mr-sm-2" style="width: 110px;" (click)="modStype()">Standard&nbsp;^</button>
         </div>
       </div>
       <div class="row">
@@ -76,7 +60,14 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputUsername">User name:</span>
             </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputUsername">
+            <input
+              type="text"
+              class="form-control"
+              aria-describedby="inputUsername"
+              id="userName"
+              name="userName"
+              [(ngModel)]="searchModel.userName"
+              placeholder="Keresés paramétere">
           </div>
         </div>
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
@@ -84,7 +75,14 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputOrganisation">Organisation:</span>
             </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputOrganisation">
+            <input
+              type="text"
+              class="form-control"
+              aria-describedby="inputOrganisation"
+              id="organisation"
+              name="organisation"
+              [(ngModel)]="searchModel.organization"
+              placeholder="Keresés paramétere">
           </div>
         </div>
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
@@ -92,7 +90,14 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputLanguage">Language:</span>
             </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputLanguage">
+            <input
+              type="text"
+              class="form-control"
+              aria-describedby="inputLanguage"
+              id="language"
+              name="language"
+              [(ngModel)]="searchModel.language"
+              placeholder="Keresés paramétere">
           </div>
         </div>
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
@@ -100,40 +105,90 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputTopic">Topic:</span>
             </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputTopic">
+            <input
+              type="text"
+              class="form-control"
+              aria-describedby="inputTopic"
+              id="topic"
+              name="topic"
+              [(ngModel)]="searchModel.topic"
+              placeholder="Keresés paramétere">
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mt-2">
           <div class="card">
-            <div class="card-header">Stars</div>
+            <div class="card-header" style="padding: .3rem 0.5rem;">Stars</div>
             <div class="card-body">
               <div class="row">
                 <div class="input-group input-group-sm mt-2 mb-2">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputStarsNumber">Number:</span>
                   </div>
-                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputStarsNumberMin">
-                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputStarsNumberMax">
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-describedby="inputStarsNumberMin"
+                    id="starsMin"
+                    name="starsMin"
+                    [(ngModel)]="searchModel.starsMin"
+                    placeholder="Keresés paramétere">
+                  <input
+                    *ngIf="starsBetweenFilter"
+                    type="text"
+                    class="form-control"
+                    aria-describedby="inputStarsNumberMax"
+                    id="starsMax"
+                    name="starsMax"
+                    [(ngModel)]="searchModel.starsMax"
+                    placeholder="Keresés paramétere">
                 </div>
               </div>
               <div class="row">
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="starsRadios" id="starsRadios1" value="option1">
-                  <label class="form-check-label" for="starsRadios1">equal</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="starsRadios"
+                    id="starsRadios_equal"
+                    value="equal"
+                    (change)="starsRadiosClick()"
+                    [(ngModel)]="searchModel.starsRadios">
+                  <label class="form-check-label" for="starsRadios_equal">equal</label>
                 </div>
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="starsRadios" id="starsRadios2" value="option2" checked>
-                  <label class="form-check-label" for="starsRadios2">greater&nbsp;than</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="starsRadios"
+                    id="starsRadios_greater_than"
+                    value="greater_than"
+                    (change)="starsRadiosClick()"
+                    [(ngModel)]="searchModel.starsRadios">
+                  <label class="form-check-label" for="starsRadios_greater_than">greater&nbsp;than</label>
                 </div>
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="starsRadios" id="starsRadios3" value="option3">
-                  <label class="form-check-label" for="starsRadios3">less&nbsp;than</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="starsRadios"
+                    id="starsRadios_less_than"
+                    value="less_than"
+                    (change)="starsRadiosClick()"
+                    [(ngModel)]="searchModel.starsRadios">
+                  <label class="form-check-label" for="starsRadios_less_than">less&nbsp;than</label>
                 </div>
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="starsRadios" id="starsRadios4" value="option4">
-                  <label class="form-check-label" for="starsRadios4">between</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="starsRadios"
+                    id="starsRadios_between"
+                    value="between"
+                    (change)="starsRadiosClick()"
+                    [(ngModel)]="searchModel.starsRadios">
+                  <label class="form-check-label" for="starsRadios_between">between</label>
                 </div>
               </div>
             </div>
@@ -141,37 +196,87 @@
         </div>
         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mt-2">
           <div class="card">
-            <div class="card-header">Created</div>
+            <div class="card-header" style="padding: .3rem 0.5rem;">Created</div>
             <div class="card-body">
               <div class="row">
                 <div class="input-group input-group-sm mt-2 mb-2">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputCreatedsDate">Date:</span>
                   </div>
-                  <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputStarsNumberMin">
-                  <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputStarsNumberMax">
+                  <input
+                    type="date"
+                    class="form-control"
+                    aria-describedby="inputStarsNumberMin"
+                    id="createdMin"
+                    name="createdMin"
+                    onkeydown="return false"
+                    [(ngModel)]="searchModel.createdMin">
+                  <input
+                    *ngIf="createdBetweenFilter"
+                    type="date"
+                    class="form-control"
+                    aria-describedby="inputStarsNumberMax"
+                    id="createdMax"
+                    name="createdMax"
+                    onkeydown="return false"
+                    [(ngModel)]="searchModel.createdMax">
                 </div>
               </div>
               <div class="row">
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="createdsRadios" id="createdsRadios1" value="option1">
-                  <label class="form-check-label" for="createdsRadios1">before</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="createdsRadios"
+                    id="createdsRadios_before"
+                    value="before"
+                    (change)="createdsRadiosClick()"
+                    [(ngModel)]="searchModel.createdRadios">
+                  <label class="form-check-label" for="createdsRadios_before">before</label>
                 </div>
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="createdsRadios" id="createdsRadios2" value="option2" checked>
-                  <label class="form-check-label" for="createdsRadios2">on&nbsp;or&nbsp;before</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="createdsRadios"
+                    id="createdsRadios_on_or_before"
+                    value="on_or_before"
+                    (change)="createdsRadiosClick()"
+                    [(ngModel)]="searchModel.createdRadios">
+                  <label class="form-check-label" for="createdsRadios_on_or_before">on&nbsp;or&nbsp;before</label>
                 </div>
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="createdsRadios" id="createdsRadios3" value="option3">
-                  <label class="form-check-label" for="createdsRadios3">after</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="createdsRadios"
+                    id="createdsRadios_after"
+                    value="after"
+                    (change)="createdsRadiosClick()"
+                    [(ngModel)]="searchModel.createdRadios">
+                  <label class="form-check-label" for="createdsRadios_after">after</label>
                 </div>
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="createdsRadios" id="createdsRadios4" value="option4">
-                  <label class="form-check-label" for="createdsRadios4">on&nbsp;or&nbsp;after</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="createdsRadios"
+                    id="createdsRadios_on_or_after"
+                    value="on_or_after"
+                    (change)="createdsRadiosClick()"
+                    [(ngModel)]="searchModel.createdRadios">
+                  <label class="form-check-label" for="createdsRadios_on_or_after">on&nbsp;or&nbsp;after</label>
                 </div>
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="createdsRadios" id="createdsRadios5" value="option5">
-                  <label class="form-check-label" for="createdsRadios5">between</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="createdsRadios"
+                    id="createdsRadios_between"
+                    value="between"
+                    (change)="createdsRadiosClick()"
+                    [(ngModel)]="searchModel.createdRadios">
+                  <label class="form-check-label" for="createdsRadios_between">between</label>
                 </div>
               </div>
             </div>
@@ -179,33 +284,74 @@
         </div>
         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mt-2">
           <div class="card">
-            <div class="card-header">Size</div>
+            <div class="card-header" style="padding: .3rem 0.5rem;">Size</div>
             <div class="card-body">
               <div class="row">
                 <div class="input-group input-group-sm mt-2 mb-2">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputSizeNumber">Number:</span>
                   </div>
-                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputSizeNumberMin">
-                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputSizeNumberMax">
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-describedby="inputSizeNumberMin"
+                    id="sizeMin"
+                    name="sizeMin"
+                    [(ngModel)]="searchModel.sizeMin">
+                  <input
+                    *ngIf="sizeBetweenFilter"
+                    type="text"
+                    class="form-control"
+                    aria-describedby="inputSizeNumberMax"
+                    id="sizeMax"
+                    name="sizeMax"
+                    [(ngModel)]="searchModel.sizeMax">
                 </div>
               </div>
               <div class="row">
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sizeRadios" id="sizeRadios1" value="option1">
-                  <label class="form-check-label" for="sizeRadios1">equal</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="sizeRadios"
+                    id="sizeRadios_equal"
+                    value="equal"
+                    (change)="sizeRadiosClick()"
+                    [(ngModel)]="searchModel.sizeRadios">
+                  <label class="form-check-label" for="sizeRadios_equal">equal</label>
                 </div>
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sizeRadios" id="sizeRadios2" value="option2" checked>
-                  <label class="form-check-label" for="sizeRadios2">greater&nbsp;than</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="sizeRadios"
+                    id="sizeRadios_greater_than"
+                    value="greater_than"
+                    (change)="sizeRadiosClick()"
+                    [(ngModel)]="searchModel.sizeRadios">
+                  <label class="form-check-label" for="sizeRadios_greater_than">greater&nbsp;than</label>
                 </div>
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sizeRadios" id="sizeRadios3" value="option3">
-                  <label class="form-check-label" for="sizeRadios3">less&nbsp;than</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="sizeRadios"
+                    id="sizeRadios_less_than"
+                    value="less_than"
+                    (change)="sizeRadiosClick()"
+                    [(ngModel)]="searchModel.sizeRadios">
+                  <label class="form-check-label" for="sizeRadios_less_than">less&nbsp;than</label>
                 </div>
                 <div class="col form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="sizeRadios" id="sizeRadios4" value="option4">
-                  <label class="form-check-label" for="sizeRadios4">between</label>
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="sizeRadios"
+                    id="sizeRadios_between"
+                    value="between"
+                    (change)="sizeRadiosClick()"
+                    [(ngModel)]="searchModel.sizeRadios">
+                  <label class="form-check-label" for="sizeRadios_between">between</label>
                 </div>
               </div>
             </div>

@@ -8,13 +8,13 @@
         class="form-check-input"
         type="radio"
         name="sortByRadios"
-        id="sortByRadios_1"
+        id="sortByRadios_default"
         value="default"
         (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
         [(ngModel)]="searchModel.sortBy">
       <label
         class="form-check-label"
-        for="sortByRadios_1">
+        for="sortByRadios_default">
         default
       </label>
     </div>
@@ -23,13 +23,13 @@
         class="form-check-input"
         type="radio"
         name="sortByRadios"
-        id="sortByRadios_2"
+        id="sortByRadios_stars"
         value="stars"
         (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
         [(ngModel)]="searchModel.sortBy">
       <label
         class="form-check-label"
-        for="sortByRadios_2">
+        for="sortByRadios_stars">
         stars
       </label>
     </div>
@@ -38,13 +38,13 @@
         class="form-check-input"
         type="radio"
         name="sortByRadios"
-        id="sortByRadios_3"
+        id="sortByRadios_forks"
         value="forks"
         (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
         [(ngModel)]="searchModel.sortBy">
       <label
         class="form-check-label"
-        for="sortByRadios_3">
+        for="sortByRadios_forks">
         forks
       </label>
     </div>
