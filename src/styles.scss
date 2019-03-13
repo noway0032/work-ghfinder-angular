@@ -6,13 +6,13 @@ body{
   font-family: Arial, Helvetica;
 }
 app-root {
+  //top: 50%;
+  //left: 50%;
+  //transform: translate(-50%, 20px);
   display: inline-table;
   position: absolute;
-  //top: 50%;
-  left: 50%;
   margin-bottom: -50%;
   margin-right: -50%;
-  transform: translate(-50%, 20px);
   background: $body-box-background;
   width: $body-box-width;
   height: $body-box-height;

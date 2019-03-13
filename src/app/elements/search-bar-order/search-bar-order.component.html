@@ -1,85 +1,97 @@
 <div class="container">
   <div class="row w-100">
-    <div class="col font-weight-bold form-check form-check-inline">
-      Sort by:
+    <div class="col-12 col-lg-6">
+      <div class="container">
+        <div class="row">
+          <div class="col font-weight-bold form-check form-check-inline">
+            Sort&nbsp;by:
+          </div>
+          <div class="col form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="sortByRadios"
+              id="sortByRadios_default"
+              value="default"
+              (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
+              [(ngModel)]="searchModel.sortBy">
+            <label
+              class="form-check-label"
+              for="sortByRadios_default">
+              default
+            </label>
+          </div>
+          <div class="col form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="sortByRadios"
+              id="sortByRadios_stars"
+              value="stars"
+              (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
+              [(ngModel)]="searchModel.sortBy">
+            <label
+              class="form-check-label"
+              for="sortByRadios_stars">
+              stars
+            </label>
+          </div>
+          <div class="col form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="sortByRadios"
+              id="sortByRadios_forks"
+              value="forks"
+              (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
+              [(ngModel)]="searchModel.sortBy">
+            <label
+              class="form-check-label"
+              for="sortByRadios_forks">
+              forks
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="sortByRadios"
-        id="sortByRadios_default"
-        value="default"
-        (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
-        [(ngModel)]="searchModel.sortBy">
-      <label
-        class="form-check-label"
-        for="sortByRadios_default">
-        default
-      </label>
-    </div>
-    <div class="col form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="sortByRadios"
-        id="sortByRadios_stars"
-        value="stars"
-        (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
-        [(ngModel)]="searchModel.sortBy">
-      <label
-        class="form-check-label"
-        for="sortByRadios_stars">
-        stars
-      </label>
-    </div>
-    <div class="col form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="sortByRadios"
-        id="sortByRadios_forks"
-        value="forks"
-        (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
-        [(ngModel)]="searchModel.sortBy">
-      <label
-        class="form-check-label"
-        for="sortByRadios_forks">
-        forks
-      </label>
-    </div>
-    <div class="col font-weight-bold form-check form-check-inline">
-      Order by:
-    </div>
-    <div class="col form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="orderByRadios"
-        id="orderByRadios_1"
-        value="desc"
-        (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
-        [(ngModel)]="searchModel.orderBy">
-      <label
-        class="form-check-label"
-        for="orderByRadios_1">
-        desc
-      </label>
-    </div>
-    <div class="col form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="orderByRadios"
-        id="orderByRadios_2"
-        value="asc"
-        (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
-        [(ngModel)]="searchModel.orderBy">
-      <label
-        class="form-check-label"
-        for="orderByRadios_2">
-        asc
-      </label>
+    <div class="col-12 col-lg-6">
+      <div class="container">
+        <div class="row">
+          <div class="col font-weight-bold form-check form-check-inline">
+            Order&nbsp;by:
+          </div>
+          <div class="col form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="orderByRadios"
+              id="orderByRadios_1"
+              value="desc"
+              (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
+              [(ngModel)]="searchModel.orderBy">
+            <label
+              class="form-check-label"
+              for="orderByRadios_1">
+              desc
+            </label>
+          </div>
+          <div class="col form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="orderByRadios"
+              id="orderByRadios_2"
+              value="asc"
+              (change)="orderByRadiosClick(searchModel.sortBy, searchModel.orderBy)"
+              [(ngModel)]="searchModel.orderBy">
+            <label
+              class="form-check-label"
+              for="orderByRadios_2">
+              asc
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,52 +1,72 @@
-<div class="row no-gutters position-relative mt-3">
-  <div class="col mb-md-0 p-md-2">
-    <table style="width: 100%;">
-      <tr>
-        <td
-          data-toggle="tooltip"
-          data-placement="top"
-          title="{{result.name}}">
-          {{smallText(result.name, 12)}}
-        </td>
-        <td>Stars: {{result.stargazers_count}}</td>
-        <td>Forks: {{result.forks_count}}</td>
-        <td rowspan="2"
-            class="small pr-2"
+<div class="container">
+  <div class="row no-gutters position-relative mt-3 py-2">
+    <div class="col-12 col-lg-4 mb-md-0 py-1">
+      <div class="container">
+        <div class="row">
+          <div class="col-4"
+            style="font-weight: bold;"
             data-toggle="tooltip"
             data-placement="top"
-            title="{{result.description}}">
-          <div class="container">{{smallText(result.description, 160)}}</div>
-        </td>
-        <td rowspan="2">
-          <span class="badge badge-pill badge-dark">{{result.language}}</span>
-        </td>
-        <td>Created at: {{result.created_at | date:'yyyy.MM.dd'}}</td>
-        <td
-          rowspan="2"
-          data-toggle="tooltip"
-          data-placement="top"
-          title="{{result.owner.login}}">
-          By: <br/>{{smallText(result.owner.login, 10)}}
-        </td>
-        <td rowspan="2">
-          <a href="{{result.owner.html_url}}" target="_blank">
-            <img src="{{result.owner.avatar_url}}" height="50px" />
-          </a>
-        </td>
-      </tr>
-      <tr>
-        <td
-          data-toggle="tooltip"
-          data-placement="top"
-          title="{{result.full_name}}">
-          <a href="{{result.html_url}}" target="_blank">
-            {{smallText(result.full_name, 12)}}
-          </a>
-        </td>
-        <td>Watchers: {{result.watchers_count}}</td>
-        <td>Issues: {{result.open_issues_count}}</td>
-        <td>Updated at: {{result.updated_at | date:'yyyy.MM.dd'}}</td>
-      </tr>
-    </table>
+            title="{{result.name}}">
+            {{smallText(result.name, 12)}}
+          </div>
+          <div class="col-4">Stars:&nbsp;{{result.stargazers_count}}</div>
+          <div class="col-4">Forks:&nbsp;{{result.forks_count}}</div>
+        </div>
+        <div class="row">
+          <div class="col-4"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="{{result.full_name}}">
+            <a href="{{result.html_url}}" target="_blank">
+              {{smallText(result.full_name, 12)}}
+            </a>
+          </div>
+          <div class="col-4">Watchers:&nbsp;{{result.watchers_count}}</div>
+          <div class="col-4">Issues:&nbsp;{{result.open_issues_count}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-4 mb-md-0 py-2">
+      <div class="container">
+        <div class="row">
+          <div class="col-9" data-toggle="tooltip" data-placement="top" title="{{result.description}}" style="font-weight: bold;">
+            {{smallText(result.description, 160)}}
+          </div>
+          <div class="col-3" style="text-align: center;">
+            <span class="badge badge-pill badge-dark">{{result.language}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-lg-2 mb-md-0 py-1">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            Created&nbsp;at:&nbsp;{{result.created_at | date:'yyyy.MM.dd'}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Updated&nbsp;at:&nbsp;{{result.updated_at | date:'yyyy.MM.dd'}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-lg-2 mb-md-0 py-1">
+      <div class="container">
+        <div class="row">
+          <div class="col-6">
+            By: <br/>{{smallText(result.owner.login, 10)}}
+          </div>
+          <div class="col-6">
+            <a href="{{result.owner.html_url}}" target="_blank">
+              <img src="{{result.owner.avatar_url}}" height="50px" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

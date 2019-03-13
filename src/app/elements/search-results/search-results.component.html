@@ -1,18 +1,17 @@
 <ng-container *ngIf="gitResultService.onlineResult != null; else coming">
   <div class="shadow p-2 mb-4 bg-light rounded">
-    <table class="w-100">
-       <tr>
-         <td class="text-left">
-           <app-search-bar-order></app-search-bar-order>
-         </td>
-         <td class="text-right">
-           <div>
-             Total results: {{gitResultService.onlineResult.total_count}}
-           </div>
-         </td>
-       </tr>
-    </table>
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <app-search-bar-order></app-search-bar-order>
+        </div>
+        <div class="col-4 text-right">
+          Total&nbsp;results:&nbsp;{{gitResultService.onlineResult.total_count}}
+        </div>
+      </div>
+    </div>
     <app-search-results-row
+      style="width: 100%"
       *ngFor="let or of (gitResultService.onlineResultItems.slice(gitResultService.page * gitResultService.rowProPage, gitResultService.page * gitResultService.rowProPage + gitResultService.rowProPage))"
       [result]="or">
     </app-search-results-row>

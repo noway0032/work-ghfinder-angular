@@ -1,11 +1,11 @@
-<div class="shadow p-2 mb-2 bg-light rounded">
-  <form class="mb-0"
+<div class="shadow mb-2 bg-light rounded">
+  <form class="mb-0 form-group"
         #eventForm="ngForm"
         (ngSubmit)="onSubmit(eventForm.value)">
     <div class="container">
-      <div class="row form-group mt-2">
-        <div class="col mt-3">
-          <div class="input-group" style="min-width: 320px">
+      <div class="row mt-2">
+        <div class="col col-sm-12 col-lg-6 mt-3">
+          <div class="input-group" style="min-width: 350px">
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputinputSearch">Search by*:</span>
             </div>
@@ -15,10 +15,10 @@
               class="form-control"
               name="searchBy"
               [(ngModel)]="searchModel.searchBy"
-              placeholder="Keresés paramétere">
+              placeholder="Search parameter">
           </div>
         </div>
-        <div class="col mt-3 btn-group flex-grow-0 form-check form-check-inline btn-group-toggle ml-auto">
+        <div class="col mt-3 ml-3 mr-auto btn-group form-check form-check-inline btn-group-toggle">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputinputSearcParam">In:</span>
           </div>
@@ -47,13 +47,13 @@
               [(ngModel)]="searchModel.inReadme"> readme
           </label>
         </div>
-        <div class="col col-sd-6 mt-3 flex-grow-0 ml-auto">
-          <button type="submit" class="btn btn-primary" style="width: 110px;">Search</button>
-        </div>
-        <div class="col col-sd-6 mt-3 flex-grow-0 ml-auto">
-          <button class="btn btn-secondary mr-sm-2" style="width: 110px;" (click)="modStype()">Advanced&nbsp;ˇ</button>
+        <div class="col mt-3 ml-auto flex-grow-0">
+          <button type="submit" class="btn btn-primary w-100">Search</button>
         </div>
       </div>
     </div>
   </form>
+  <div class="col mt-2 ml-auto px-0 font-weight-light">
+    <button class="btn btn-light mr-sm-2" style="width: 100%; border-top-left-radius: 0px; border-top-right-radius: 0px; font-size: smaller; padding: 2px;" (click)="modStype()">Advanced&nbsp;ˇ</button>
+  </div>
 </div>

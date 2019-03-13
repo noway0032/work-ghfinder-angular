@@ -1,20 +1,15 @@
-<ng-container *ngIf="1 != null; else loading">
-  <div class="container-fluid mt-2" style="height: inherit;">
-    <div class="row-fluid">
-      <div class="col-12">
-        <app-search-bar-default *ngIf="_extended; else extended" [stype]="_extended" (mstype)="modInput()"></app-search-bar-default>
-        <ng-template #extended>
-          <app-search-bar-extended [stype]="_extended" (mstype)="modInput()"></app-search-bar-extended>
-        </ng-template>
-      </div>
-    </div>
-    <div class="row-fluid h-100">
-      <div class="col-12" style="height: inherit;">
-        <app-search-results></app-search-results>
-      </div>
+<div class="container-fluid mt-2" style="height: inherit;">
+  <div class="row-fluid">
+    <div class="col-12">
+      <app-search-bar-default *ngIf="_extended; else extended" [stype]="_extended" (mstype)="modInput()"></app-search-bar-default>
+      <ng-template #extended>
+        <app-search-bar-extended [stype]="_extended" (mstype)="modInput()"></app-search-bar-extended>
+      </ng-template>
     </div>
   </div>
-</ng-container>
-<ng-template #loading>
-  <app-loading-spinner></app-loading-spinner>
-</ng-template>
+  <div class="row-fluid h-100">
+    <div class="col-12" style="height: inherit;">
+      <app-search-results></app-search-results>
+    </div>
+  </div>
+</div>
