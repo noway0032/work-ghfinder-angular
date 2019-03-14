@@ -20,6 +20,10 @@ export class SearchBarExtendedComponent implements OnInit {
   starsBetweenFilter = false;
   createdBetweenFilter = false;
   sizeBetweenFilter = false;
+  languageInput: '';
+  language: string[] = [];
+  topicInput: '';
+  topic: string[] = [];
 
   constructor(
     private _router: Router,
@@ -38,6 +42,42 @@ export class SearchBarExtendedComponent implements OnInit {
     this.mstype.emit();
   }
 
+  languageAdd() {
+    if (this.languageInput.length > 2) {
+      let van = true;
+      for (const lang of this.language) {
+        if (lang === this.languageInput) {
+          van = false;
+        }
+      }
+      if (van) {
+        this.language.push(this.languageInput);
+        this._searchService.searchModel.language = this.language;
+      }
+      this.languageInput = '';
+    }
+  }
+
+  topicAdd() {
+    if (this.topicInput.length > 2) {
+      let van = true;
+      for (const lang of this.topic) {
+        if (lang === this.topicInput) {
+          van = false;
+        }
+      }
+      if (van) {
+        this.topic.push(this.topicInput);
+        this._searchService.searchModel.topic = this.topic;
+      }
+      this.topicInput = '';
+    }
+  }
+
+  languageDel(value: string) {
+    this.language.remove(value);
+  }
+
   private getSearchByValid(): boolean {
     return (this.searchModel.searchBy  === null ||
       this.searchModel.searchBy.length < 3);
@@ -46,25 +86,21 @@ export class SearchBarExtendedComponent implements OnInit {
   private getUserNameValid(): boolean {
     return (this.searchModel.userName.length < 3 &&
       this.searchModel.userName.length  > 0 &&
-      this.searchModel.userName  != null);
+      this.searchModel.userName != null);
   }
 
   private getOrganizationValid(): boolean {
     return (this.searchModel.organization.length < 3 &&
       this.searchModel.organization.length  > 0 &&
-      this.searchModel.organization  != null);
+      this.searchModel.organization != null);
   }
 
   private getLanguageValid(): boolean {
-    return (this.searchModel.language.length < 3 &&
-      this.searchModel.language.length  > 0 &&
-      this.searchModel.language  != null);
+    return this.searchModel.language.length  != null;
   }
 
   private getTopicValid(): boolean {
-    return (this.searchModel.topic.length < 3 &&
-      this.searchModel.topic.length  > 0 &&
-      this.searchModel.topic  != null);
+    return this.searchModel.topic  != null;
   }
 
   private getStarsValid(): boolean {
@@ -118,9 +154,7 @@ export class SearchBarExtendedComponent implements OnInit {
       this.searchModel.sizeMin === this._searchService.defaultSearch.sizeMin) {
       this.allerts.alert5sec('Another parameter is required!');
     } else if (this.getUserNameValid() ||
-      this.getOrganizationValid() ||
-      this.getLanguageValid() ||
-      this.getTopicValid()) {
+      this.getOrganizationValid()) {
       this.allerts.alert5sec('Minimum 3 characters per selected parameter!');
     } else if (this.getStarsValid() ||
       this.getCreatedValid() ||
@@ -173,5 +207,13 @@ export class SearchBarExtendedComponent implements OnInit {
 
   set allerts(value: AlertsService) {
     this._allerts = value;
+  }
+
+  get searchService(): SearchService {
+    return this._searchService;
+  }
+
+  set searchService(value: SearchService) {
+    this._searchService = value;
   }
 }

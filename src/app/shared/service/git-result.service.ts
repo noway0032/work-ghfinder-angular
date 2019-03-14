@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
 import {GitResultModel} from '../model/git-result-model';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {Observable, Subject, throwError} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable, Subject} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {GitResultItemModel} from '../model/git-result-item-model';
 import {InputRadioSort} from '../enum/input-radio-sort.enum';
 import {InputRadioOrder} from '../enum/input-radio-order.enum';
-import {AlertsService} from './alerts.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +22,7 @@ export class GitResultService {
   private _headers = new HttpHeaders({ 'Content-Type': 'application/json'});
   private _error = false;
 
-  constructor(private _http: HttpClient,
-              private _allerts: AlertsService) {
+  constructor(private _http: HttpClient) {
   }
 
   refresResults(): Observable<GitResultModel> {
@@ -49,7 +47,6 @@ export class GitResultService {
             },
           (err) => {
             this._error = true;
-            this._allerts.alert5sec('No data to display!');
           });
     }
   }

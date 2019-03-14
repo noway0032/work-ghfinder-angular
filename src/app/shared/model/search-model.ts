@@ -16,8 +16,8 @@ export class SearchModel {
 
   private _userName: string;
   private _organization: string;
-  private _language: string;
-  private _topic: string;
+  private _language: string[];
+  private _topic: string[];
   private _starsMin: number;
   private _starsMax: number;
   private _starsRadios: InputRadioStars;
@@ -27,6 +27,22 @@ export class SearchModel {
   private _sizeMin: number;
   private _sizeMax: number;
   private _sizeRadios: InputRadioSize;
+
+  get language(): string[] {
+    return this._language;
+  }
+
+  set language(value: string[]) {
+    this._language = value;
+  }
+
+  get topic(): string[] {
+    return this._topic;
+  }
+
+  set topic(value: string[]) {
+    this._topic = value;
+  }
 
   get searchBy(): string {
     return this._searchBy;
@@ -89,22 +105,6 @@ export class SearchModel {
 
   set organization(value: string) {
     this._organization = value;
-  }
-
-  get language(): string {
-    return this._language;
-  }
-
-  set language(value: string) {
-    this._language = value;
-  }
-
-  get topic(): string {
-    return this._topic;
-  }
-
-  set topic(value: string) {
-    this._topic = value;
   }
 
   get starsMin(): number {

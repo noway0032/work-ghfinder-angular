@@ -6,6 +6,7 @@ import {InputRadioSort} from '../enum/input-radio-sort.enum';
 import {InputRadioStars} from '../enum/input-radio-stars.enum';
 import {InputRadioCreated} from '../enum/input-radio-created.enum';
 import {InputRadioSize} from '../enum/input-radio-size.enum';
+import {ifStmt} from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +31,8 @@ export class SearchService {
     sd.orderBy = InputRadioOrder.DESC;
     sd.userName = '';
     sd.organization = '';
-    sd.language = '';
-    sd.topic = '';
+    sd.language = null;
+    sd.topic = null;
     sd.starsMin = null;
     sd.starsMax = null;
     sd.starsRadios = InputRadioStars.GREATER_THAN;
@@ -130,8 +131,16 @@ export class SearchService {
   private makeUrlParam(): string {
     let inS = this.searchModel.userName.length > 2 ? '+user:' + this.searchModel.userName : '';
     inS += this.searchModel.organization.length > 2 ? '+org:' + this.searchModel.organization : '';
-    inS += this.searchModel.language.length > 2 ? '+language:' + this.searchModel.language : '';
-    inS += this.searchModel.topic.length > 2 ? '+topic:' + this.searchModel.topic : '';
+    if (this.searchModel.language != null) {
+      for (const lanfs of this.searchModel.language) {
+        inS += '+language:' + lanfs;
+      }
+    }
+    if (this.searchModel.topic != null) {
+      for (const tops of this.searchModel.topic) {
+        inS += '+topic:' + tops;
+      }
+    }
     inS += this.starsFilter();
     inS += this.createdFilter();
     inS += this.sizeFilter();

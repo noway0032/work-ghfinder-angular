@@ -18,6 +18,7 @@ import {SearchComponent} from './pages/search/search.component';
 import { SearchBarOrderComponent } from './elements/search-bar-order/search-bar-order.component';
 import { FooterComponent } from './core/footer/footer.component';
 import {AlertModule, TooltipModule} from 'ngx-bootstrap';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {AlertModule, TooltipModule} from 'ngx-bootstrap';
     BrowserModule,
     AppRoutingModule,
     AlertModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

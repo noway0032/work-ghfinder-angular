@@ -93,9 +93,18 @@
               class="form-control"
               aria-describedby="inputLanguage"
               id="language"
+              [(ngModel)]="languageInput"
               name="language"
-              [(ngModel)]="searchModel.language"
               placeholder="Parameter">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="languageAdd()" type="button" id="button-LanguageAdd">Add</button>
+            </div>
+          </div>
+          <div style="text-align: left;">
+            <button type="button" class="btn btn-labeled btn-danger btn-sm m-1"
+              *ngFor="let lg of this._searchService.searchModel.language">
+              <span class="btn-label"><fa name="fas fa-times"></fa></span> {{lg}}
+            </button>
           </div>
         </div>
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
@@ -108,9 +117,18 @@
               class="form-control"
               aria-describedby="inputTopic"
               id="topic"
+              [(ngModel)]="topicInput"
               name="topic"
-              [(ngModel)]="searchModel.topic"
               placeholder="Parameter">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="topicAdd()" type="button" id="button-TopicAdd">Add</button>
+            </div>
+          </div>
+          <div style="text-align: left;">
+            <button type="button" class="btn btn-labeled btn-danger btn-sm m-1"
+                    *ngFor="let tp of this._searchService.searchModel.topic">
+              <span class="btn-label"><fa name="fas fa-times"></fa></span> {{tp}}
+            </button>
           </div>
         </div>
       </div>
