@@ -1,0 +1,15 @@
+<div style="position: fixed; z-index: 2; width: 100%; bottom: 2em;">
+  <div class="mx-auto w-75 mt-2" *ngFor="let alert of alerts">
+    <alert
+      [type]="alert.type"
+      [dismissOnTimeout]="alert.timeout"
+      (alert.onClosed)="alert.onClosed(alert)">
+      {{ alert.msg }}
+    </alert>
+  </div>
+</div>
+<div class="footer">
+  <div id="container">
+  </div>
+</div>
+

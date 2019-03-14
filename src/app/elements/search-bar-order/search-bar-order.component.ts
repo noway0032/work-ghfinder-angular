@@ -5,6 +5,7 @@ import {SearchService} from '../../shared/service/search.service';
 import {InputRadioOrder} from '../../shared/enum/input-radio-order.enum';
 import {GitResultService} from '../../shared/service/git-result.service';
 import {InputRadioSort} from '../../shared/enum/input-radio-sort.enum';
+import {GitResultModel} from '../../shared/model/git-result-model';
 
 @Component({
   selector: 'app-search-bar-order',
@@ -14,11 +15,13 @@ import {InputRadioSort} from '../../shared/enum/input-radio-sort.enum';
 export class SearchBarOrderComponent implements OnInit {
 
   private _searchModel: SearchModel;
+  private _gitResultModel: GitResultModel;
 
   constructor(
     private _router: Router,
     private _searchService: SearchService,
     private _gitResultService: GitResultService) {
+    this._gitResultModel = this._gitResultService.onlineResult;
   }
 
   ngOnInit() {

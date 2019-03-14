@@ -27,4 +27,12 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
+  get extended(): boolean {
+    return this._extended;
+  }
+
+  set extended(value: boolean) {
+    this._extended = value;
+  }
+
 }

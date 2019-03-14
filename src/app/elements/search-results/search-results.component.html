@@ -35,7 +35,16 @@
     </div>
   </ng-container>
   <ng-template #loading>
-    <app-loading-spinner></app-loading-spinner>
+    <ng-container *ngIf="this.gitResultService.errorFound; else loading_anim">
+      <div class="shadow p-2 mb-2 bg-light rounded">
+        <div class="py-5 text-center">
+          No data to display!
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #loading_anim>
+      <app-loading-spinner></app-loading-spinner>
+    </ng-template>
   </ng-template>
 </ng-template>
 

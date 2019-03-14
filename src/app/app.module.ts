@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {SearchComponent} from './pages/search/search.component';
 import { SearchBarOrderComponent } from './elements/search-bar-order/search-bar-order.component';
+import { FooterComponent } from './core/footer/footer.component';
+import {AlertModule, TooltipModule} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,13 +33,16 @@ import { SearchBarOrderComponent } from './elements/search-bar-order/search-bar-
     Page2Component,
     SearchComponent,
     SearchResultsRowComponent,
-    SearchBarOrderComponent
+    SearchBarOrderComponent,
+    FooterComponent
   ],
   imports: [
     HttpClientModule,
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AlertModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

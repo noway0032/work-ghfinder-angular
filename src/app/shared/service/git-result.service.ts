@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {GitResultModel} from '../model/git-result-model';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, Subject} from 'rxjs';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {Observable, Subject, throwError} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {GitResultItemModel} from '../model/git-result-item-model';
 import {InputRadioSort} from '../enum/input-radio-sort.enum';
 import {InputRadioOrder} from '../enum/input-radio-order.enum';
+import {AlertsService} from './alerts.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,10 @@ export class GitResultService {
   private _url: string;
   private _refreshNeeded$ = new Subject<void>();
   private _headers = new HttpHeaders({ 'Content-Type': 'application/json'});
+  private _error = false;
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient,
+              private _allerts: AlertsService) {
   }
 
   refresResults(): Observable<GitResultModel> {
@@ -31,8 +34,7 @@ export class GitResultService {
       .pipe(
         tap(() => {
           this._refreshNeeded$.next();
-        })
-      );
+        }));
   }
 
   getAllRow() {
@@ -40,10 +42,14 @@ export class GitResultService {
       this.refresResults()
         .subscribe(
           data => {
-            this.onlineResult = data;
-            this.onlineResultItems = data.items;
-            this.totalPages = Math.ceil(data.items.length / this.rowProPage);
-            this._page = 0;
+              this.onlineResult = data;
+              this.onlineResultItems = data.items;
+              this.totalPages = Math.ceil(data.items.length / this.rowProPage);
+              this._page = 0;
+            },
+          (err) => {
+            this._error = true;
+            this._allerts.alert5sec('No data to display!');
           });
     }
   }
@@ -130,5 +136,9 @@ export class GitResultService {
 
   set page(value: number) {
     this._page = value;
+  }
+
+  get errorFound(): boolean {
+    return this._error;
   }
 }

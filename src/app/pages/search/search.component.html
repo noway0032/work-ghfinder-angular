@@ -1,9 +1,9 @@
 <div class="container-fluid mt-2" style="height: inherit;">
   <div class="row-fluid">
     <div class="col-12">
-      <app-search-bar-default *ngIf="_extended; else extended" [stype]="_extended" (mstype)="modInput()"></app-search-bar-default>
-      <ng-template #extended>
-        <app-search-bar-extended [stype]="_extended" (mstype)="modInput()"></app-search-bar-extended>
+      <app-search-bar-default *ngIf="extended; else ext" [stype]="extended" (mstype)="modInput()"></app-search-bar-default>
+      <ng-template #ext>
+        <app-search-bar-extended [stype]="extended" (mstype)="modInput()"></app-search-bar-extended>
       </ng-template>
     </div>
   </div>

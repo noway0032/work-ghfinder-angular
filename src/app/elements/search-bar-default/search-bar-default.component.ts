@@ -3,6 +3,7 @@ import {SearchModel} from '../../shared/model/search-model';
 import {Router} from '@angular/router';
 import {SearchService} from '../../shared/service/search.service';
 import {GitResultService} from '../../shared/service/git-result.service';
+import {AlertsService} from '../../shared/service/alerts.service';
 
 @Component({
   selector: 'app-search-bar-default',
@@ -18,7 +19,8 @@ export class SearchBarDefaultComponent implements OnInit {
   constructor(
     private _router: Router,
     private _searchService: SearchService,
-    private _gitResultService: GitResultService) {
+    private _gitResultService: GitResultService,
+    private _allerts: AlertsService) {
   }
 
   ngOnInit() {
@@ -29,12 +31,21 @@ export class SearchBarDefaultComponent implements OnInit {
     this.mstype.emit();
   }
 
+  private getSearchByValid(): boolean {
+    return (this.searchModel.searchBy  === null ||
+      this.searchModel.searchBy.length < 3);
+  }
+
   onSubmit(form) {
-    this._searchService.startStandardSearch();
-    this._router
-      .navigateByUrl('/Refrsh', {skipLocationChange: true})
-      .then(() =>
-        this._router.navigate(['/search']));
+    if (this.getSearchByValid()) {
+      this.allerts.alert5sec('Minimum 3 characters required!');
+    } else {
+      this._searchService.startStandardSearch();
+      this._router
+        .navigateByUrl('/Refrsh', {skipLocationChange: true})
+        .then(() =>
+          this._router.navigate(['/search']));
+    }
   }
 
   checkedInput(bool: boolean): string {
@@ -43,5 +54,13 @@ export class SearchBarDefaultComponent implements OnInit {
 
   get searchModel(): SearchModel {
     return this._searchModel;
+  }
+
+  get allerts(): AlertsService {
+    return this._allerts;
+  }
+
+  set allerts(value: AlertsService) {
+    this._allerts = value;
   }
 }

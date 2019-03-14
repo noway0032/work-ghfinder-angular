@@ -89,7 +89,6 @@ export class SearchService {
   private createdFilter(): string {
     const vMin = this.searchModel.createdMin != null && this.searchModel.createdMin.toString().length > 0;
     const vMax = this.searchModel.createdMax != null && this.searchModel.createdMax.toString().length > 0;
-    console.log(this.searchModel.createdMin + ' ' + this.searchModel.createdMax)
     switch (this.searchModel.createdRadios) {
       case InputRadioCreated.BEFORE: {
         return vMin ? '+created:<' + this.searchModel.createdMin : '';

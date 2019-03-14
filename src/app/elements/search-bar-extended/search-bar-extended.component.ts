@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {InputRadioSize} from '../../shared/enum/input-radio-size.enum';
 import {InputRadioCreated} from '../../shared/enum/input-radio-created.enum';
 import {InputRadioStars} from '../../shared/enum/input-radio-stars.enum';
+import {AlertsService} from '../../shared/service/alerts.service';
 
 @Component({
   selector: 'app-search-bar-extended',
@@ -22,23 +23,116 @@ export class SearchBarExtendedComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private _searchService: SearchService) {
+    private _searchService: SearchService,
+    private _allerts: AlertsService) {
   }
 
   ngOnInit() {
     this._searchModel = this._searchService.searchModel;
+    this.starsRadiosClick();
+    this.createdsRadiosClick();
+    this.sizeRadiosClick();
   }
 
   modStype() {
     this.mstype.emit();
   }
 
+  private getSearchByValid(): boolean {
+    return (this.searchModel.searchBy  === null ||
+      this.searchModel.searchBy.length < 3);
+  }
+
+  private getUserNameValid(): boolean {
+    return (this.searchModel.userName.length < 3 &&
+      this.searchModel.userName.length  > 0 &&
+      this.searchModel.userName  != null);
+  }
+
+  private getOrganizationValid(): boolean {
+    return (this.searchModel.organization.length < 3 &&
+      this.searchModel.organization.length  > 0 &&
+      this.searchModel.organization  != null);
+  }
+
+  private getLanguageValid(): boolean {
+    return (this.searchModel.language.length < 3 &&
+      this.searchModel.language.length  > 0 &&
+      this.searchModel.language  != null);
+  }
+
+  private getTopicValid(): boolean {
+    return (this.searchModel.topic.length < 3 &&
+      this.searchModel.topic.length  > 0 &&
+      this.searchModel.topic  != null);
+  }
+
+  private getStarsValid(): boolean {
+    if (this.searchModel.starsRadios === InputRadioStars.BETWEEN && ((
+      this.searchModel.starsMin !== this._searchService.defaultSearch.starsMin &&
+      this.searchModel.starsMax !== this._searchService.defaultSearch.starsMax &&
+      this.searchModel.starsMin >= this.searchModel.starsMax) ||
+      ( this.searchModel.starsMin !== this._searchService.defaultSearch.starsMin &&
+        this.searchModel.starsMax === this._searchService.defaultSearch.starsMax))) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private getCreatedValid(): boolean {
+    if (this.searchModel.createdRadios === InputRadioCreated.BETWEEN && ((
+      this.searchModel.createdMin !== this._searchService.defaultSearch.createdMin &&
+      this.searchModel.createdMax !== this._searchService.defaultSearch.createdMax &&
+      this.searchModel.createdMin >= this.searchModel.createdMax) ||
+      ( this.searchModel.createdMin !== this._searchService.defaultSearch.createdMin &&
+        this.searchModel.createdMax === this._searchService.defaultSearch.createdMax))) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private getSizeValid(): boolean {
+    if (this.searchModel.sizeRadios === InputRadioSize.BETWEEN && ((
+      this.searchModel.sizeMin !== this._searchService.defaultSearch.sizeMin &&
+      this.searchModel.sizeMax !== this._searchService.defaultSearch.sizeMax &&
+      this.searchModel.sizeMin >= this.searchModel.sizeMax) ||
+    ( this.searchModel.sizeMin !== this._searchService.defaultSearch.sizeMin &&
+      this.searchModel.sizeMax === this._searchService.defaultSearch.sizeMax))) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   onSubmit(form) {
-    this._searchService.startAdvancedSearch();
-    this._router
-      .navigateByUrl('/Refrsh', {skipLocationChange: true})
-      .then(() =>
-        this._router.navigate(['/search']));
+    if (this.getSearchByValid()) {
+      this.allerts.alert5sec('Minimum 3 characters required!');
+    } else if (this.searchModel.userName === this._searchService.defaultSearch.userName &&
+      this.searchModel.organization === this._searchService.defaultSearch.organization &&
+      this.searchModel.language === this._searchService.defaultSearch.language &&
+      this.searchModel.topic === this._searchService.defaultSearch.topic &&
+      this.searchModel.starsMin === this._searchService.defaultSearch.starsMin &&
+      this.searchModel.createdMin === this._searchService.defaultSearch.createdMin &&
+      this.searchModel.sizeMin === this._searchService.defaultSearch.sizeMin) {
+      this.allerts.alert5sec('Another parameter is required!');
+    } else if (this.getUserNameValid() ||
+      this.getOrganizationValid() ||
+      this.getLanguageValid() ||
+      this.getTopicValid()) {
+      this.allerts.alert5sec('Minimum 3 characters per selected parameter!');
+    } else if (this.getStarsValid() ||
+      this.getCreatedValid() ||
+      this.getSizeValid()) {
+      this.allerts.alert5sec('The minimum value must not be greater than the maximum!');
+    } else {
+      this._searchService.startAdvancedSearch();
+      this._router
+        .navigateByUrl('/Refrsh', {skipLocationChange: true})
+        .then(() =>
+          this._router.navigate(['/search']));
+    }
   }
 
   starsRadiosClick() {
@@ -71,5 +165,13 @@ export class SearchBarExtendedComponent implements OnInit {
 
   get searchModel(): SearchModel {
     return this._searchModel;
+  }
+
+  get allerts(): AlertsService {
+    return this._allerts;
+  }
+
+  set allerts(value: AlertsService) {
+    this._allerts = value;
   }
 }
