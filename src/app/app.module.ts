@@ -19,6 +19,8 @@ import { SearchBarOrderComponent } from './elements/search-bar-order/search-bar-
 import { FooterComponent } from './core/footer/footer.component';
 import {AlertModule, TooltipModule} from 'ngx-bootstrap';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import { ButtonLanguageComponent } from './elements/button-language/button-language.component';
+import { ButtonTopicComponent } from './elements/button-topic/button-topic.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
     SearchComponent,
     SearchResultsRowComponent,
     SearchBarOrderComponent,
-    FooterComponent
+    FooterComponent,
+    ButtonLanguageComponent,
+    ButtonTopicComponent
   ],
   imports: [
     HttpClientModule,

@@ -101,10 +101,9 @@
             </div>
           </div>
           <div style="text-align: left;">
-            <button type="button" class="btn btn-labeled btn-danger btn-sm m-1"
-              *ngFor="let lg of this._searchService.searchModel.language">
-              <span class="btn-label"><fa name="fas fa-times"></fa></span> {{lg}}
-            </button>
+            <div style="text-align: left;">
+              <app-button-language *ngFor="let lg of this._searchService.searchModel.language" [result]="lg"></app-button-language>
+            </div>
           </div>
         </div>
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
@@ -125,10 +124,9 @@
             </div>
           </div>
           <div style="text-align: left;">
-            <button type="button" class="btn btn-labeled btn-danger btn-sm m-1"
-                    *ngFor="let tp of this._searchService.searchModel.topic">
-              <span class="btn-label"><fa name="fas fa-times"></fa></span> {{tp}}
-            </button>
+            <div style="text-align: left;">
+              <app-button-topic *ngFor="let tp of this._searchService.searchModel.topic" [result]="tp"></app-button-topic>
+            </div>
           </div>
         </div>
       </div>

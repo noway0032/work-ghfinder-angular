@@ -74,10 +74,6 @@ export class SearchBarExtendedComponent implements OnInit {
     }
   }
 
-  languageDel(value: string) {
-    this.language.remove(value);
-  }
-
   private getSearchByValid(): boolean {
     return (this.searchModel.searchBy  === null ||
       this.searchModel.searchBy.length < 3);

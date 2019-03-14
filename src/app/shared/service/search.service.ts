@@ -6,7 +6,6 @@ import {InputRadioSort} from '../enum/input-radio-sort.enum';
 import {InputRadioStars} from '../enum/input-radio-stars.enum';
 import {InputRadioCreated} from '../enum/input-radio-created.enum';
 import {InputRadioSize} from '../enum/input-radio-size.enum';
-import {ifStmt} from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +18,26 @@ export class SearchService {
   constructor(
     private _gitResultService: GitResultService) {
     this._searchModel = this.defaultSearch;
+  }
+
+  languageRem(value: string) {
+    let i = 0;
+    for (const lang of this._searchModel.language) {
+      if (lang === value) {
+        this._searchModel.language.splice(i, 1);
+      }
+      i++;
+    }
+  }
+
+  topicRem(value: string) {
+    let i = 0;
+    for (const lang of this._searchModel.topic) {
+      if (lang === value) {
+        this._searchModel.topic.splice(i, 1);
+      }
+      i++;
+    }
   }
 
   get defaultSearch(): SearchModel {
