@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {SearchService} from '../../shared/service/search.service';
 import {GitResultService} from '../../shared/service/git-result.service';
 import {AlertsService} from '../../shared/service/alerts.service';
+import {HistoryService} from '../../shared/service/history.service';
 
 @Component({
   selector: 'app-search-bar-default',
@@ -20,7 +21,8 @@ export class SearchBarDefaultComponent implements OnInit {
     private _router: Router,
     private _searchService: SearchService,
     private _gitResultService: GitResultService,
-    private _allerts: AlertsService) {
+    private _allerts: AlertsService,
+    private _historyService: HistoryService) {
   }
 
   ngOnInit() {
@@ -62,5 +64,13 @@ export class SearchBarDefaultComponent implements OnInit {
 
   set allerts(value: AlertsService) {
     this._allerts = value;
+  }
+
+  get searchService(): SearchService {
+    return this._searchService;
+  }
+
+  set searchService(value: SearchService) {
+    this._searchService = value;
   }
 }

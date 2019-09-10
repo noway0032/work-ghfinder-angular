@@ -44,4 +44,12 @@ export class SearchBarOrderComponent implements OnInit {
   set searchModel(value: SearchModel) {
     this._searchModel = value;
   }
+
+  get gitResultModel(): GitResultModel {
+    return this._gitResultModel;
+  }
+
+  set gitResultModel(value: GitResultModel) {
+    this._gitResultModel = value;
+  }
 }

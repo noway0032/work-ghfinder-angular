@@ -102,7 +102,7 @@
           </div>
           <div style="text-align: left;">
             <div style="text-align: left;">
-              <app-button-language *ngFor="let lg of this._searchService.searchModel.language" [result]="lg"></app-button-language>
+              <app-button-language *ngFor="let lg of searchService.searchModel.language" [result]="lg"></app-button-language>
             </div>
           </div>
         </div>
@@ -125,7 +125,7 @@
           </div>
           <div style="text-align: left;">
             <div style="text-align: left;">
-              <app-button-topic *ngFor="let tp of this._searchService.searchModel.topic" [result]="tp"></app-button-topic>
+              <app-button-topic *ngFor="let tp of searchService.searchModel.topic" [result]="tp"></app-button-topic>
             </div>
           </div>
         </div>
